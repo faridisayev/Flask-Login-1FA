@@ -1,0 +1,26 @@
+{% extends 'schema/outline.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    {% include 'schema/alerts.html'%}
+
+    <!-- display different content for logged in user and guest -->
+
+    <div class="page-content">
+        {% if session["username"] %}
+            {% if session["email"] %}
+                <p>Your email is not verfied. <a href="/verify_email/{{ session['email'][0]['email'] }}/{{ session['username'] }}">Verify now.</a></p>
+            {% endif %}
+            <p><a href="/logout">Logout</a></p>
+            <p><a href="/update_password">Update password</a></p>
+            <p><a href="/delete">Delete account</a></p>
+            <p><a href="/change_email/{{ session['username'] }}">Change email</a></p>
+        {% else %}
+            <p>You are NOT logged in</p>
+            <p><a href="/login">Login</a></p>
+        {% endif %}
+    </div>
+
+{% endblock %}

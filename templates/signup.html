@@ -1,0 +1,18 @@
+{% extends 'schema/outline.html' %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block body %}
+
+    {% include 'schema/alerts.html'%}
+
+    <form action="{{ url_for('signup') }}" method="post">
+        <h1>Sign up</h1>
+        <input placeholder="Username" type="text" name="username" autofocus autocomplete="off" autocorrect="off" spellcheck="false" required>
+        <input placeholder="Email" type="email" name="email" autocomplete="off" autocorrect="off" spellcheck="false" required>
+        <input placeholder="Password" type="password" name="password" required>
+        <button type="submit">Sign up</button>
+        <p><a href="/login">Log in</a></p>
+    </form>
+
+{% endblock %}

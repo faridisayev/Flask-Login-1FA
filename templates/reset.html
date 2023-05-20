@@ -1,0 +1,15 @@
+{% extends 'schema/outline.html' %}
+
+{% block title %}Reset Password{% endblock %}
+
+{% block body %}
+
+    {% include 'schema/alerts.html'%}
+    
+    <form method="POST" action="{{ url_for('reset', token = token)}}">
+        <input placeholder="Username" type="text" name="username" autocomplete="off" autocorrect="off" spellcheck="false" required>
+        <input placeholder="New Password" type="password" name="password" autocomplete="off" autocorrect="off" spellcheck="false" required>
+        <button type="submit">Reset</button>
+    </form>
+
+{% endblock %}

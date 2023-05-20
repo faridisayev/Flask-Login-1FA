@@ -1,0 +1,14 @@
+{% extends 'schema/outline.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    {% include 'schema/alerts.html'%}
+
+    <form action="/change_email/{{ session['username'] }}", method="post">
+        <input placeholder="New Email" type="email" name="new_email" autofocus autocomplete="off" autocorrect="off" spellcheck="false" required>
+        <button type="submit">Change Email</button>
+    </form>
+
+{% endblock %}

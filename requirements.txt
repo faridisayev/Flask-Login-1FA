@@ -1,0 +1,6 @@
+Flask
+Flask-Session
+Flask-Mail
+CS50
+Flask-Limiter
+ItsDangerous
