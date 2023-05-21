@@ -1,18 +1,61 @@
 {% extends 'schema/outline.html' %}
 
-{% block title %}Sign up{% endblock %}
+{% block head %} <link rel="stylesheet" href="{{ url_for('static', filename = 'css/form.css') }}"> {% endblock %}
+
+{% block title %} Sign Up {% endblock %}
 
 {% block body %}
 
-    {% include 'schema/alerts.html'%}
+{% include 'schema/alerts.html'%}
 
-    <form action="{{ url_for('signup') }}" method="post">
-        <h1>Sign up</h1>
-        <input placeholder="Username" type="text" name="username" autofocus autocomplete="off" autocorrect="off" spellcheck="false" required>
-        <input placeholder="Email" type="email" name="email" autocomplete="off" autocorrect="off" spellcheck="false" required>
-        <input placeholder="Password" type="password" name="password" required>
-        <button type="submit">Sign up</button>
-        <p><a href="/login">Log in</a></p>
-    </form>
+<div class="container on">
+  <div class="screen">
+    <h3 class="title">
+      CONNECTION ESTABLISHED - SIGN UP
+    </h3>
+    <div class="box--outer">
+      <div class="box">
+        <div class="box--inner">
+          <div class="content">
+            <div class="holder">
+              <form method="post" action="{{ url_for('signup') }}">
+                    <div class="row">
+                      <div class="col col__left label">
+                          Username
+                      </div>
+                      <div class="col col__center">
+                          <input id="username" class="input" placeholder="Username" type="text" name="username" autofocus autocomplete="off" autocorrect="off" spellcheck="false" required>    
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col col__left label">
+                          Email
+                      </div>
+                      <div class="col col__center">
+                          <input id="email" class="input" placeholder="Email" type="email" name="email" autocomplete="off" autocorrect="off" spellcheck="false" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col col__left label">
+                        Password
+                      </div>
+                      <div class="col col__center">
+                        <input id="password" class="input" placeholder="Password" type="password" name="password" autocomplete="off" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <button type="submit" id="submit" name="submit">[signup]</button>
+                    </div>
+                    <div class="row links-row">
+                        <a class="link" href="/login">Log In</a>
+                    </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

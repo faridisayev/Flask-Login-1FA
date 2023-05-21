@@ -1,0 +1,226 @@
+/* 
+style from https://codepen.io/robinselmer/pen/vJjbOZ
+*/
+
+@import "https://fonts.googleapis.com/css?family=Inconsolata";
+
+html {
+  min-height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #000000;
+  background-image: radial-gradient(#11581e, #041607),
+    url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Inconsolata", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: rgba(128, 255, 128, 0.8);
+  text-shadow: 0 0 1ex rgba(51, 255, 51, 1), 0 0 2px rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  margin: 0;
+}
+
+.noise {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  opacity: 0.02;
+}
+
+.overlay {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background-size: auto 4px;
+  z-index: 1;
+}
+
+.overlay::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    0deg,
+    transparent 0%,
+    rgba(32, 128, 32, 0.2) 2%,
+    rgba(32, 128, 32, 0.8) 3%,
+    rgba(32, 128, 32, 0.2) 3%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  animation: scan 7.5s linear 0s infinite;
+}
+
+@keyframes scan {
+  0% {
+    background-position: 0 -100vh;
+  }
+  35%,
+  100% {
+    background-position: 0 100vh;
+  }
+}
+
+.terminal {
+  box-sizing: inherit;
+  position: absolute;
+  height: 100%;
+  /*width: 1000px;*/
+  width: 100%;
+  padding: 4rem;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.output {
+  cursor: pointer;
+  font-size: 0.6em;
+  color: rgba(128, 255, 128, 0.8);
+  text-shadow: 0 0 1px rgba(51, 255, 51, 0.4), 0 0 2px rgba(255, 255, 255, 0.8);
+  margin-bottom: 5px;
+}
+
+.output::before {
+  content: "> root :";
+}
+
+.text {
+  font-size: 0.8em;
+}
+
+a {
+  font-size: 0.8em;
+  color: #fff;
+  text-decoration: none;
+}
+
+a::before {
+  content: "[";
+}
+
+a::after {
+  content: "]";
+}
+
+.errorcode {
+  color: white;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.little {
+  font-size: 0.7em;
+}
+
+.section {
+  border: solid 3px;
+  box-shadow: 0 0 1ex rgba(51, 255, 51, 1), 0 0 2px rgba(255, 255, 255, 0.8);
+  margin: 5px;
+  padding: 5px;
+}
+
+.game-container {
+  width: 600px;
+  height: 400px;
+  display: flex;
+}
+
+.board {
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.scores {
+  width: 30%;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-out;
+}
+
+.bottom {
+  overflow-y: scroll;
+  height: 46%;
+}
+
+.showed {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: 0 0 1ex rgba(51, 255, 51, 1), 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.new,
+.selected-Log {
+  background-color: rgba(51, 255, 51, 0.4);
+}
+
+.page-content {
+  text-align: center;
+}

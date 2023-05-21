@@ -150,7 +150,9 @@ body {
 }
 
 #email,
-#login,
+#username,
+#old_password,
+#new_password,
 #password {
   border: 2px solid #d7001e;
   margin: 10px 0;
@@ -166,13 +168,17 @@ body {
 }
 
 #email::-moz-selection,
-#login::-moz-selection,
+#username::-moz-selection,
+#old_password::-moz-selection,
+#new_password::-moz-selection,
 #password::-moz-selection {
   background: #000
 }
 
 #email::selection,
-#login::selection,
+#username::selection,
+#old_password::selection,
+#new_password::selection,
 #password::selection {
   background: #000
 }
@@ -250,9 +256,7 @@ body {
   .box--inner {
     width: calc(100% - 44px)
   }
-  #email,
-  #login,
-  #password {
+  #email, #password, #username, #old_password, #new_password {
     max-width: 70%
   }
   .screen::after {

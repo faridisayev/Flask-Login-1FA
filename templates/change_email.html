@@ -1,14 +1,45 @@
 {% extends 'schema/outline.html' %}
 
-{% block title %}Home{% endblock %}
+{% block head %} <link rel="stylesheet" href="{{ url_for('static', filename = 'css/form.css') }}"> {% endblock %}
+
+{% block title %} Home {% endblock %}
 
 {% block body %}
 
-    {% include 'schema/alerts.html'%}
+{% include 'schema/alerts.html'%}
 
-    <form action="/change_email/{{ session['username'] }}", method="post">
-        <input placeholder="New Email" type="email" name="new_email" autofocus autocomplete="off" autocorrect="off" spellcheck="false" required>
-        <button type="submit">Change Email</button>
-    </form>
+<div class="container on">
+  <div class="screen">
+    <h3 class="title">
+      CONNECTION ESTABLISHED - CHANGE EMAIL
+    </h3>
+    <div class="box--outer">
+      <div class="box">
+        <div class="box--inner">
+          <div class="content">
+            <div class="holder">
+              <b>Change Email</b>
+              <br>
+              <br>
+              <form method="post" action="/change_email/{{ session['username'] }}">
+                    <div class="row">
+                      <div class="col col__left label">
+                          Email
+                      </div>
+                      <div class="col col__center">
+                          <input id="email" placeholder="New Email" type="email" name="new_email" autofocus autocomplete="off" autocorrect="off" spellcheck="false" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <button type="submit" id="submit" name="submit">[change email]</button>
+                    </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

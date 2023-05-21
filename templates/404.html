@@ -1,11 +1,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/404.css') }}">
-<section class="error-body">
-	<video preload="auto" class="background" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/396624/err.mp4" autoplay muted loop></video>
-	<div class="message">
-		<h1 t="404">404</h1>
-		<div class="bottom">
-			<p>You have lost your way</p>
-			<a href="/">return home</a>
-		</div>
-	</div>
-</section>
+<div class="noise"></div>
+<div class="overlay"></div>
+<div class="terminal">
+  <h1>Error <span class="errorcode">404</span></h1>
+  <p class="output">The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p>
+  <p class="output">Please try to go back or <a href="/">return to the homepage</a>.</p>
+  <p class="output">Good luck.</p>
+</div>

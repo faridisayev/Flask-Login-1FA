@@ -1,247 +1,101 @@
-@import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
+/*
+style from https://codepen.io/robinselmer/pen/vJjbOZ
+*/
 
-:root {
-  box-sizing: border-box;
-  cursor: default;
+@import 'https://fonts.googleapis.com/css?family=Inconsolata';
+ html {
+	 min-height: 100%;
 }
-::selection {
-  color: #11111b;
-  background-color: #000;
+body {
+	box-sizing: border-box;
+	height: 100%;
+	background-color: #000;
+	background-image: radial-gradient(#11581e, #041607), url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: 'Inconsolata', Helvetica, sans-serif;
+	font-size: 1.5rem;
+	color: rgba(128, 255, 128, 0.8);
+	text-shadow: 0 0 1ex rgba(51, 255, 51, 1), 0 0 2px rgba(255, 255, 255, 0.8);
 }
-html, body {
-  width: 100%;
-  height: 100%;
-  background-color: #11111b;
-  color: #db0e15;
-  font-size: calc(6.4px + 0.8125vw);
+.noise {
+ pointer-events: none;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+ background-repeat: no-repeat;
+ background-size: cover;
+ z-index: -1;
+ opacity: 0.02;
 }
-.error-body {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+.overlay {
+ pointer-events: none;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+ background-size: auto 4px;
+ z-index: 1;
 }
-.error-body:before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  mix-blend-mode: overlay;
-  z-index: 1;
-}
-.error-body:after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #11111b 21px, transparent 1%) center, linear-gradient(#11111b 21px, transparent 1%) center, #fff;
-  background-size: 22px 22px;
-  background-position: center;
-  opacity: 0.2;
-  z-index: 1;
-}
-.error-body .background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  filter: grayscale(1);
-  mix-blend-mode: luminosity;
-}
-.error-body .message {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  z-index: 3;
-}
-.error-body .message h1 {
-  position: absolute;
-  top: 10%;
-  left: 0%;
-  width: 100%;
-  font-size: 10em;
-  font-weight: bolder;
-  margin: 0;
-  animation: shake 600ms ease-in-out infinite alternate;
-  text-shadow: 0 0 0.07em #db0e15, -0.2em 0 2em rgba(219, 14, 21, 8), 0.2em 0 2em rgba(219, 14, 21, 8);
-  user-select: none;
-  font-family: 'Share Tech Mono', monospace;
-}
-.error-body .message h1:before {
-  content: attr(t);
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0.34em);
-  height: 0.1em;
-  line-height: 0.5em;
-  width: 100%;
-  animation: scan 500ms ease-in-out infinite alternate 32ms, glitch-anim 300ms ease-in-out infinite alternate;
-  overflow: hidden;
-  opacity: 0.7;
-}
-.error-body .message h1:after {
-  content: attr(t);
-  position: absolute;
-  top: -23px;
-  left: 50%;
-  transform: translate(-50%, 0.34em);
-  height: 0.5em;
-  line-height: 0.1em;
-  width: 100%;
-  animation: scan 665ms ease-in-out infinite alternate 240ms, glitch-anim 300ms ease-in-out infinite alternate;
-  overflow: hidden;
-  opacity: 0.8;
-}
-.error-body .message .bottom {
-  position: absolute;
-  top: 65%;
-  left: 0;
-  width: 100%;
-}
-.error-body .message p, .error-body .message a {
-  font-size: 2em;
-  font-family: monospace;
-  text-shadow: 0 0 5px #db0e15;
-  filter: blur(0.8px);
-}
-.error-body .message a {
-  position: relative;
-  color: #db0e15;
-  text-decoration: none;
-  font-weight: 700;
-  border: 2px solid #db0e15;
-  text-transform: uppercase;
-  padding: 5px 30px;
-  box-shadow: inset 0 0 0 0 rgba(219, 14, 21, 8);
-  transition: 25ms ease-in-out all 0ms;
-  overflow: hidden;
-  animation: attn 3s ease-in-out infinite;
-}
-.error-body .message a:hover {
-  cursor: crosshair;
-  box-shadow: inset 0 -2em 0 0 rgba(219, 14, 21, 8);
-  transition: 225ms ease-in-out all 225ms;
-  animation: none;
-}
-.error-body .message a:hover:before, .error-body .message a:hover:after {
-  transform: translate(-50%, 0) scale(0, 1);
-}
-.error-body .message a:active {
-  box-shadow: inset 0 -2em 0 0 rgba(219, 14, 21, 8);
-  transition: 225ms ease-in-out all 225ms;
-}
-.error-body .message a:before, .error-body .message a:after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0) scale(1, 1);
-  transform-origin: center;
-  background-color: #11111b;
-  width: 90%;
-  height: 5px;
-  transition: 225ms ease-in-out all;
-  mix-blend-mode: hard-light;
-}
-.error-body .message a:before {
-  top: -4px;
-}
-.error-body .message a:after {
-  bottom: -4px;
+.overlay::before {
+	content: "";
+	pointer-events: none;
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(0deg, transparent 0%, rgba(32, 128, 32, 0.2) 2%, rgba(32, 128, 32, 0.8) 3%, rgba(32, 128, 32, 0.2) 3%, transparent 100%);
+	background-repeat: no-repeat;
+	animation: scan 7.5s linear 0s infinite;
 }
 @keyframes scan {
-  from, 20%, 100% {
-    height: 0;
-    transform: translate(-50%, 0.44em);
- }
-  10%, 15% {
-    height: 1em;
-    line-height: 0.2em;
-    transform: translate(-55%, 0.02em);
- }
+	0% {
+		background-position: 0 -100vh;
+	}
+	35%, 100% {
+		background-position: 0 100vh;
+	}
 }
-@keyframe pulse {
-  from {
-    text-shadow: 0 0 0 rgba(219, 14, 21, 8), 0 0 5px rgba(219, 14, 21, .8), 0 0 5px rgba(219, 14, 21, .8);
- }
-  to {
-    text-shadow: 0 0 0.07em rgba(219, 14, 21, 8), -0.2em 0 2em rgba(219, 14, 21, .8), 0.2em 0 2em rgba(219, 14, 21, .8);
- }
+.terminal {
+	box-sizing: inherit;
+	position: absolute;
+	height: 100%;
+	width: 1000px;
+	max-width: 100%;
+	padding: 4rem;
+	text-transform: uppercase;
 }
-@keyframes attn {
-  0%, 100% {
-    opacity: 1;
- }
-  30%, 35% {
-    opacity: 0.4;
- }
+.output {
+	color: rgba(128, 255, 128, 0.8);
+	text-shadow: 0 0 1px rgba(51, 255, 51, 0.4), 0 0 2px rgba(255, 255, 255, 0.8);
 }
-@keyframes shake {
-  0%, 100% {
-    transform: translate(-1px, 0);
- }
-  10% {
-    transform: translate(2px, 1px);
- }
-  30% {
-    transform: translate(-3px, 2px);
- }
-  35% {
-    transform: translate(2px, -3px);
-    filter: blur(4px);
- }
-  45% {
-    transform: translate(2px, 2px) skewY(-8deg) scale(0.96, 1);
-    filter: blur(0);
- }
-  50% {
-    transform: translate(-3px, 1px);
- }
+.output::before {
+	content: "> ";
 }
-@keyframes glitch-anim {
-  0% {
-    clip: rect(51px, 9999px, 80px, 0);
- }
-  10% {
-    clip: rect(29px, 9999px, 87px, 0);
- }
-  20% {
-    clip: rect(38px, 9999px, 81px, 0);
- }
-  30% {
-    clip: rect(22px, 9999px, 80px, 0);
- }
-  40% {
-    clip: rect(69px, 9999px, 15px, 0);
- }
-  50% {
-    clip: rect(100px, 9999px, 56px, 0);
- }
-  60% {
-    clip: rect(63px, 9999px, 79px, 0);
- }
-  70% {
-    clip: rect(70px, 9999px, 52px, 0);
- }
-  80% {
-    clip: rect(6px, 9999px, 68px, 0);
- }
-  90% {
-    clip: rect(93px, 9999px, 77px, 0);
- }
-  100% {
-    clip: rect(23px, 9999px, 43px, 0);
- }
+/* .input {
+	color: rgba(192, 255, 192, 0.8);
+	text-shadow: 0 0 1px rgba(51, 255, 51, 0.4), 0 0 2px rgba(255, 255, 255, 0.8);
 }
-
-body {
-  background-color: #000 !important;
-  color: #db0e15 !important;
+.input::before {
+	content: "$ ";
 }
+ */
+ a {
+	 color: #fff;
+	 text-decoration: none;
+}
+ a::before {
+	 content: "[";
+}
+ a::after {
+	 content: "]";
+}
+ .errorcode {
+	 color: white;
+}
+ 

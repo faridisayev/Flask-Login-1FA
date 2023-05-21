@@ -2,25 +2,46 @@
 
 {% block head %} <link rel="stylesheet" href="{{ url_for('static', filename = 'css/index.css') }}"> {% endblock %}
 
-{% block title %}Home{% endblock %}
+{% block title %} Home {% endblock %}
 
 {% block body %}
 
-    {% include 'schema/alerts.html'%}
-
-    <div class="page-content">
-        {% if session["username"] %}
-            {% if session["email"] %}
-                <p>Your email is not verfied. <a href="/verify_email/{{ session['email'][0]['email'] }}/{{ session['username'] }}">Verify now.</a></p>
-            {% endif %}
-            <p><a href="/logout">Logout</a></p>
-            <p><a href="/update_password">Update password</a></p>
-            <p><a href="/delete">Delete account</a></p>
-            <p><a href="/change_email/{{ session['username'] }}">Change email</a></p>
-        {% else %}
-            <p>You are NOT logged in</p>
-            <p><a href="/login">Login</a></p>
-        {% endif %}
+<div class="noise"></div>
+<div class="overlay"></div>
+<div class="terminal">
+  {% include 'schema/alerts.html'%}
+  <div class="page-content">
+    {% if session["username"] %}
+      {% if session["email"] %}
+        <p>Your email is not verfied. <a href="/verify_email/{{ session['email'][0]['email'] }}/{{ session['username'] }}">Verify now.</a></p>
+      {% endif %}
+      <p><a href="/logout">Logout</a>  <a href="/update_password">Update password</a>  <a href="/delete">Delete account</a>  <a href="/change_email/{{ session['username'] }}">Change email</a></p>
+    {% else %}
+      <p>You are NOT logged in</p>
+      <p><a href="/login">Login</a></p>
+    {% endif %}
+  </div>
+  <div id="msj"> use arrows to play </div>
+  <div class="game-container section">
+    <div class="board section" id="board"> LOADING... </div>
+    <div class="scores section">
+      <div class="top section">
+        <h1>2048</h1>
+        <div class="little">Console</div>
+      </div>
+      <div class="mid section">
+        <div class="score">
+          <div class="text">Score:</div>
+          <a id="score" href="#1">0</a>
+        </div>
+      </div>
+      <div class="bottom section">
+        <div id="log"> </div>
+      </div>
     </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="{{ url_for('static', filename = 'js/index.js')}}"></script>
 
 {% endblock %}
