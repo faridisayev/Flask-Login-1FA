@@ -44,9 +44,13 @@ def login():
             session["username"] = username
             if not bool(db.execute("SELECT is_verified FROM users WHERE username = ?", username)[0]['is_verified']):
                 session["email"] = db.execute("SELECT email FROM users WHERE username = ?", username)
-            return redirect(url_for("index"))
+            return redirect(url_for("loader"))
         else: Flashes("wrongCredentials")
     return render_template("login.html")
+
+@app.route("/loader", methods = ["GET"])
+def loader():
+    return render_template("loader.html")
 
 @app.route("/signup", methods=["POST", "GET"])
 @limiter.limit("5 per minute")

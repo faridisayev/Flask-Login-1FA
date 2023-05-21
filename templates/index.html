@@ -1,12 +1,12 @@
 {% extends 'schema/outline.html' %}
 
+{% block head %} <link rel="stylesheet" href="{{ url_for('static', filename = 'css/index.css') }}"> {% endblock %}
+
 {% block title %}Home{% endblock %}
 
 {% block body %}
 
     {% include 'schema/alerts.html'%}
-
-    <!-- display different content for logged in user and guest -->
 
     <div class="page-content">
         {% if session["username"] %}
