@@ -3,14 +3,17 @@ from flask import flash
 from re import match
 from itsdangerous import URLSafeTimedSerializer
 
-# string encoder 
+# string encoder
+
+
 def hash(string):
     return sha256(string.encode('utf-8')).hexdigest()
 
+
 def Flashes(message):
     match message:
-        
-        # error messages 
+
+        # error messages
         case "input":
             return flash("Please fill all fields before submission", "error")
         case "wrongCredentials":
@@ -29,8 +32,8 @@ def Flashes(message):
             return flash("The password link is not valid or has expired", "error")
         case "usernameNotFound":
             return flash("The username is not found", "error")
-        
-        # info messages 
+
+        # info messages
         case "verificationLinkSent":
             return flash("A message containing verification link has been sent to your email", "info")
         case "emailVerified":
@@ -45,19 +48,25 @@ def Flashes(message):
             return flash("Unknown message")
 
 # password security controller
-def password_matches_pattern(password, pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+[\]{}|;:,.<>/?`]).{8,}$"):
+
+
+def password_matches_pattern(password, pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+[\]{}|;:,.<>/?`]).{8,}$"):
     return match(pattern, password)
 
-# token generator 
+# token generator
+
+
 def generate_token(app, email, salt):
     serializer = URLSafeTimedSerializer(app.secret_key)
     return serializer.dumps(email, salt)
 
 # token verifier
+
+
 def verify_token(app, token, salt, expiration=3600):
     serializer = URLSafeTimedSerializer(app.secret_key)
     try:
-        email = serializer.loads(token, salt = salt, max_age = expiration)
+        email = serializer.loads(token, salt=salt, max_age=expiration)
         return email
     except:
         return None

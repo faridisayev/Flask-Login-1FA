@@ -1,50 +1,64 @@
-{% extends 'schema/outline.html' %}
-
-{% block head %} <link rel="stylesheet" href="{{ url_for('static', filename = 'css/form.css') }}"> {% endblock %}
-
-{% block title %} Log in {% endblock %}
-
-{% block body %}
-
-{% include 'schema/alerts.html'%}
+{% extends 'schema/outline.html' %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = 'css/form.css') }}"
+/>
+{% endblock %} {% block title %} Log in {% endblock %} {% block body %} {%
+include 'schema/alerts.html'%}
 
 <div class="container on">
   <div class="screen">
-    <h3 class="title">
-      CONNECTION ESTABLISHED - LOG IN
-    </h3>
+    <h3 class="title">CONNECTION ESTABLISHED - LOG IN</h3>
     <div class="box--outer">
       <div class="box">
         <div class="box--inner">
           <div class="content">
             <div class="holder">
-              <b>Welcome to 2048</b> — a simple game with&nbsp;an&nbsp; auth1 system. Please enter your
-              VIP user credentials.
-              <br>
-              <br>
+              <b>Welcome to 2048</b> — a simple game with&nbsp;an&nbsp; auth1
+              system. Please enter your VIP user credentials.
+              <br />
+              <br />
               <form method="post" action="{{ url_for('login') }}">
-                    <div class="row">
-                      <div class="col col__left label">
-                        Username
-                      </div>
-                      <div class="col col__center">
-                          <input id="username" class="input" placeholder="Username" type="text" name="username" autofocus autocomplete="off" autocorrect="off" spellcheck="false" required>    
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col col__left label">
-                        Password
-                      </div>
-                      <div class="col col__center">
-                        <input id="password" class="input" placeholder="Password" type="password" name="password" autocomplete="off" required>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <button type="submit" id="submit" name="submit">[login]</button>
-                    </div>
-                    <div class="row links-row">
-                        <a class="link" href="/signup">Sign up</a>  <a class="link" href="/reset_password">Forgot password?</a>
-                    </div>
+                <div class="row">
+                  <div class="col col__left label">Username</div>
+                  <div class="col col__center">
+                    <input
+                      id="username"
+                      class="input"
+                      placeholder="Username"
+                      type="text"
+                      name="username"
+                      autofocus
+                      autocomplete="off"
+                      autocorrect="off"
+                      spellcheck="false"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col__left label">Password</div>
+                  <div class="col col__center">
+                    <input
+                      id="password"
+                      class="input"
+                      placeholder="Password"
+                      type="password"
+                      name="password"
+                      autocomplete="off"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <button type="submit" id="submit" name="submit">
+                    [login]
+                  </button>
+                </div>
+                <div class="row links-row">
+                  <a class="link" href="/signup">Sign up</a>
+                  <a class="link" href="/reset_password">Forgot password?</a>
+                </div>
               </form>
             </div>
           </div>
