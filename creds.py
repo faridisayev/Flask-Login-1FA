@@ -1,3 +1,3 @@
-EMAIL = "faridisayev@outlook.com"
-APP_PASSWORD = "yacdptpsvjcikhwi"
-FLASK_SECRET_KEY = 'kadjaslkdhjdshf1232187454ksjfj2312#$(da)'
+EMAIL = MY_EMAIL
+APP_PASSWORD = MY_APP_PASSWORD
+FLASK_SECRET_KEY = MY_FLASK_SECRET_KEY
