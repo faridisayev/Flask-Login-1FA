@@ -3,7 +3,7 @@ This is a simple Flask-Login app that features 1 Factor Authentication.
 
 Resetting password and other sensitive data is handled through one time link.
 
-It is strongly adviced to use **Outlook Mail** because **Gmail** requires setup of **Gmail API**.
+It is strongly adviced to use **Outlook** because **Gmail** requires setup of **Gmail API**.
 
 Some _styles_ and _javascript_ were taken from [Codepen](https://codepen.io).
 
