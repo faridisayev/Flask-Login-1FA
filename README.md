@@ -1,6 +1,10 @@
 # Flask-Login-1FA
 This is a simple Flask-Login app that features 1 Factor Authentication.
 
-Resetting password and other sensitive data is handled through mailing one time link.
+Resetting password and other sensitive data is handled through one time link.
 
-Also, I have used my Outlook account simply because Gmail requires API for basic usage.
+It is strongly adviced to use **Outlook Mail** because **Gmail** requires setup of **Gmail API**.
+
+Some _styles_ and _javascript_ were taken from [Codepen](https://codepen.io).
+
+If you are interested in more advanced security, visit [GitHub](https://github.com/faridisayev/Flask-Login-2FA).
