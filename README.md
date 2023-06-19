@@ -7,4 +7,4 @@ It is strongly adviced to use **Outlook** because **Gmail** requires setup of **
 
 Some _styles_ and _javascript_ were taken from [Codepen](https://codepen.io).
 
-If you are interested in more advanced security, visit [my Flask-Login-2FA project](https://github.com/faridisayev/Flask-Login-2FA).
+If you are interested in more advanced security, visit my [Flask-Login-2FA](https://github.com/faridisayev/Flask-Login-2FA) project.
